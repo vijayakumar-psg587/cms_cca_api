@@ -1,0 +1,75 @@
+.uploadFormDiv{
+    display: grid;
+    grid-row: 2/ span 1;
+}
+
+.formatDiv {
+   position: relative;
+   left: 0px;
+   width: 65%;
+   margin: 0 auto;
+   display: grid;
+}
+
+.formatDiv.formatDiv_transition {
+    animation: left_transition 0.4s forwards linear;
+}
+
+@keyframes left_transition {
+    0% {
+        left: 5%
+    }
+    50% {
+        left: 10%
+    }
+    100% {
+        left: 15%
+    }
+}
+
+.formatDiv.formatDiv_undoTransition {
+    animation: left_undo_transition 0.4s forwards linear;
+}
+
+@keyframes left_undo_transition {
+    0% {
+        left: 15%
+    }
+    50% {
+        left: 5%
+    }
+    100% {
+        left: 0%
+    }
+}
+
+.card_div_left {
+    float: left;
+}
+
+.card_div_right {
+    float: right;
+    /* background: url({{ url_for('static', filename='images/file_upload/file_upload.png')}}) repeat; */
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    max-height: 25vh;
+    height: 22vh;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: darkblue;
+    border-color: darkblue;
+}

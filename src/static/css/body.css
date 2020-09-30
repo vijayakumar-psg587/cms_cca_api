@@ -1,0 +1,8 @@
+
+.container-fluid.bodyClass {
+    display: grid;
+    width: inherit;
+    grid-template-rows: 15% 65% 20%;
+    height: 100vh;
+    padding: 0px !important;
+}

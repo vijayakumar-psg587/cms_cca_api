@@ -1,0 +1,52 @@
+<div class="formatDiv">
+{% if uploadFileFlag %}
+    
+    {% block uploadFileContent %}
+       <div class='uploadFormDiv'>
+          
+            <form action="/uploadFiles" method="post" enctype="multipart/form-data" class="">
+                <div class="form-group">
+                    <div>
+                        <h1 class="display-7">Upload FPRS and CMS files in respective cards</h1>
+                    </div>
+                  <label for="planIdInput" class="col-sm-2 col-form-label"></label>
+                  <div class="col-sm-10" style="padding-left: 10vw;">
+                    <input type="text" class="form-control mx-sm-6" name="planIdInput" id="" placeholder="Plan number"
+                        aria-describedby="helpId">
+                    <small id="helpId" class="text-muted">Enter the plan number</small>
+                  </div>
+                  
+                </div>
+               
+                <div class="file_cards" style="width: 100%;">
+                    <div class="card card_div_left" style="width: 18rem; display: inline-block;">
+                            <div class="card-body">
+                                <h5 class="card-title">FPRS File</h5>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="fprsFileInput">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                                <div style="height:2vh"></div>
+                                <a href="#" class="btn btn-primary">Upload</a>
+                            </div>
+                    </div>
+                    <div class="card card_div_right" style="width: 18rem; display: inline-block;">
+                            <div class="card-body">
+                                <h5 class="card-title">CMS File</h5>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="cmsFileInput">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                                <div style="height:2vh"></div>
+                                <a href="#" class="btn btn-primary">Upload</a>
+                            </div>
+                    </div>
+                </div>    
+            </form>
+        </div>
+        
+    {% endblock uploadFileContent %}
+{% else %}
+    <span>Else block</span>
+{% endif %}
+</div>

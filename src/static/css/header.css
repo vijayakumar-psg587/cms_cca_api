@@ -1,0 +1,114 @@
+
+.header {
+    background-color:  darkslateblue;
+}
+
+.grid-header{
+    
+    padding: 0px !important;
+    max-width: inherit;
+    max-height: 15vh;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 70% 30%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.logo-img {
+  
+  filter: invert(20%) sepia(42%) saturate(120%) hue-rotate(6deg) brightness(1001%) contrast(150%) drop-shadow(0px 0px 0px white);
+  height: fit-content;
+  /* filter: drop-shadow(1px 0px 1px white); */
+  border: none;
+  position: relative;
+  width: 37%;
+  left: 45%;
+  /*bottom: 19%;  */
+  transition: transform 0.5s ease-in-out;
+}
+
+.center {
+  grid-column: 1/span 1;
+  grid-row: 1/span 1;
+  
+}
+
+.logo-img:hover {
+  transform: scale(1.3);
+  animation: pulse_anim 0.5s ease-in;
+}
+
+@keyframes pulse_anim {
+  0% {
+    width: fit-content;
+    filter: invert(20%) sepia(42%) saturate(120%) hue-rotate(6deg) brightness(1001%) contrast(150%) drop-shadow(0px 0px 0px white);
+    height: fit-content;
+  
+  }
+  50% {
+    width: fit-content;
+    filter: invert(20%) sepia(42%) saturate(120%) hue-rotate(6deg) brightness(1001%) contrast(150%) drop-shadow(0px 2px 2px white);
+    height: fit-content;
+    
+  }
+  100% {
+    width: fit-content;
+    filter: invert(20%) sepia(42%) saturate(120%) hue-rotate(6deg) brightness(1001%) contrast(150%) drop-shadow(1px 2px 0px white);
+    height: fit-content;
+  }
+}
+
+section.grid-item-logo {
+  max-height: inherit;
+    height: inherit;
+    max-width: inherit;
+    grid-row: 1/span 1;
+    grid-column: 1/span 1;
+    display: grid;
+    grid-template-columns: 50% auto;
+    grid-template-rows: auto;
+}
+
+section.grid-item-links {
+  max-height: inherit;
+  height: inherit;
+  max-width: inherit;
+  grid-row: 1/span 1;
+  grid-column: 2/span 2;
+  text-align: center;
+}
+
+section > aside > a {
+  color: white;
+  font-weight: 500;
+  font-size: 31px;
+  padding-left: 10vw;
+  top: 6vh;
+  position: relative;
+}
+
+#link_grp {
+  width: 100%;
+  height: 100%;
+}
+
+section > #line_span {
+  grid-column: 2/span 1;
+  grid-row: 1/span 1;
+  position: initial;
+  padding-left: 9%;
+  box-shadow:  -30px 0px 15px -30px white;
+}
+
+code {
+  color: white;
+  position: relative;
+  top: 40%;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.link1 {
+  padding:unset;
+}

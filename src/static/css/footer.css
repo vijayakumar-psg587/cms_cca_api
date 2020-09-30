@@ -1,0 +1,5 @@
+div.grid-footer {
+    display: grid;
+    background: darkslateblue;
+    grid-row: 3/span 1;
+}
