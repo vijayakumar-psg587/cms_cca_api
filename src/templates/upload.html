@@ -1,52 +1,70 @@
-<div class="formatDiv">
-{% if uploadFileFlag %}
+{% extends 'home.html' %}
+
+
     
     {% block uploadFileContent %}
-       <div class='uploadFormDiv'>
-          
-            <form action="/uploadFiles" method="post" enctype="multipart/form-data" class="">
-                <div class="form-group">
-                    <div>
-                        <h1 class="display-7">Upload FPRS and CMS files in respective cards</h1>
-                    </div>
-                  <label for="planIdInput" class="col-sm-2 col-form-label"></label>
-                  <div class="col-sm-10" style="padding-left: 10vw;">
-                    <input type="text" class="form-control mx-sm-6" name="planIdInput" id="" placeholder="Plan number"
-                        aria-describedby="helpId">
-                    <small id="helpId" class="text-muted">Enter the plan number</small>
-                  </div>
-                  
-                </div>
-               
-                <div class="file_cards" style="width: 100%;">
-                    <div class="card card_div_left" style="width: 18rem; display: inline-block;">
-                            <div class="card-body">
-                                <h5 class="card-title">FPRS File</h5>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="fprsFileInput">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+     {% if uploadFileFlag %}
+     
+                
+                <div class='uploadFormDiv'>
+                            
+                        <form name='uploadFileForm'>
+                            
+                            <div class="form-group plan-Id-group">
+                                <div>
+                                    <h1 class="display-7" style="margin: 0 auto;
+                                    text-align: center;">Upload FPRS and CMS files in respective cards</h1>
                                 </div>
-                                <div style="height:2vh"></div>
-                                <a href="#" class="btn btn-primary">Upload</a>
-                            </div>
-                    </div>
-                    <div class="card card_div_right" style="width: 18rem; display: inline-block;">
-                            <div class="card-body">
-                                <h5 class="card-title">CMS File</h5>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="cmsFileInput">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                <label for="planIdInput" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10" style="padding-left: 10vw;">
+                                    <input type="text" class="form-control mx-sm-6" name="planIdInput" id="planIdInput" placeholder="Plan number"
+                                        aria-describedby="helpId" required>
+                                    <small id="helpId" class="text-muted">Enter the plan number</small>
                                 </div>
-                                <div style="height:2vh"></div>
-                                <a href="#" class="btn btn-primary">Upload</a>
+                            
                             </div>
+                            <div class='form-group file-card-group'>
+                                <div class="file_cards" style="width: 100%;">
+                                    <div class="card card_div_left border-0" style="width: 18rem; display: inline-block;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">FPRS File</h5>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="fprsFileInput" id="fprsFileInput" onchange="fileEvent(event)">
+                                                    <label class="custom-file-label" id="fprsFileInputLabel" for="inputGroupFile01">Choose file</label>
+                                                </div>
+                                                <div style="height:2vh"></div>
+                                                
+                                                <a href="#" class="btn btn-primary" id="fprsFileInputButton" onclick="uploadFprsFileEvent(event)">
+                                                   <i class="fa fa-arrow-alt-circle-up fa-2x" aria-hidden="true"></i> <span id="fprsFileInputSpan" style="font-size: 1.2em;">Upload</span></a>
+                                            </div>
+                                    </div>
+                                    <div class="card card_div_right border-0" style="width: 18rem; display: inline-block;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">CMS File</h5>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="cmsFileInput" id="cmsFileInput" onchange="fileEvent(event)">
+                                                    <label class="custom-file-label" id="cmsFileInputLabel" for="inputGroupFile01">Choose file</label>
+                                                </div>
+                                                <div style="height:2vh"></div>
+                                                <a href="#" class="btn btn-primary" id="cmsFileInputButton" onclick="uploadCMSFileEvent(event)">
+                                                    <i class="fa fa-arrow-alt-circle-up fa-2x" aria-hidden="true"></i> <span id="cmsFileInputSpan" style="font-size: 1.2em;">Upload</span></a>
+                                            </div>
+                                    </div>
+                                    
+                                </div>  
+                            </div>
+                       
+                            <div class='form-group submit-button-group'><h3 class="display-9 generateButtonClass">
+                                Generate comparsion report</h1>
+                                <button type="submit" class="btn btn-primary submit-button-class" onclick="generateClick(event)">Generate</button>
+                            </div> 
+                            
                     </div>
-                </div>    
-            </form>
-        </div>
+            
+        {% else %}
+        
+            <span>Else block</span>
+        
+        {% endif %}
         
     {% endblock uploadFileContent %}
-{% else %}
-    <span>Else block</span>
-{% endif %}
-</div>

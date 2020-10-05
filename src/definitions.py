@@ -6,6 +6,7 @@ ROOT_SRC_DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(os.getcwd()+os.sep+'/')
 ROOT_LOG_DIR = os.path.join(os.getcwd(), 'logs')
 ROOT_ENV_DIR = os.path.join(os.getcwd(), 'env')
+ROOT_UPLOAD_DIR = os.path.join(os.getcwd(), 'upload')
 
 
 # print(ROOT_SRC_DIR)

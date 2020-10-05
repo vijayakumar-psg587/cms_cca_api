@@ -1,0 +1,57 @@
+{% extends 'home.html'%}
+    {% block fileListContent %}
+    
+<div class="fileListDiv">            
+<div class="classic-tabs mx-2 ulDiv">
+
+  <ul class="nav nav-tabs md-tabs" id="customFileListUl" style="background: darkslateblue;" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link  waves-light active fileListHeader show" id="fprsFilesTab" data-toggle="tab" href="#fprsFilesTabDiv"
+          role="tab" aria-controls="fprsFilesTab" aria-selected="true">
+          <!-- <i class="fas fa-arrow-alt-circle-up btn-outline-dark fa-3x"></i> -->
+            <br>Fprs_Files</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light fileListHeader" id="cmsFilesTab" data-toggle="tab" href="#cmsFilesTabDiv"
+          role="tab" aria-controls="cmsFilesTab" aria-selected="false">
+          <!-- <i class="fas fa-heart fa-2x pb-2" aria-hidden="true"></i> -->
+            <br>CMS_Files</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light fileListHeader" id="comparsionTab" data-toggle="tab" href="#comparsionTabDiv"
+          role="tab" aria-controls="comparsionTab" aria-selected="false">
+          <!-- <i class="fas fa-envelope fa-2x pb-2" aria-hidden="true"></i> -->
+            <br>Comparison_Files</a>
+      </li>
+      
+    </ul>
+  
+    <div class="tab-content card" id="fprsFilesTabDiv">
+      <div class="tab-pane fade active show" id="fprsContentDiv" role="tabpanel" aria-labelledby="fprsContentDiv-aria-follow">
+        {% for %}
+        
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+          totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+          consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+          dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
+          incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+      </div>
+      <div class="tab-pane fade" id="cmsFilesContentDiv" role="tabpanel" aria-labelledby="cmsFilesContentDiv-aria-follow">
+        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+          aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
+          quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+      </div>
+      <div class="tab-pane fade" id="comparsionFilesContentDiv" role="tabpanel" aria-labelledby="comparsionFilesContentDiv-aria-follow">
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+          deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+          provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+          Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est
+          eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
+          assumenda est, omnis dolor repellendus. </p>
+      </div>
+    </div>
+  
+  </div>
+  </div>
+    {% endblock fileListContent %}

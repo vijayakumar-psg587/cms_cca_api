@@ -7,6 +7,7 @@ from functools import wraps
 
 
 def custom_logger_time_wrapper(logger_name, level):
+
     def log_func_appender(original_func):
         """DOC String - Logger appender with basic config and path to existing messages"""
         @wraps(original_func)

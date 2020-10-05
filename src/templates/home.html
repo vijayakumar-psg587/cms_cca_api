@@ -5,40 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+   <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 
     <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='css/body.css')}}">
     <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='css/header.css')}}">
     <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='css/footer.css')}}">
     <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='css/upload.css')}}">
     <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='css/sidenav.css')}}">
+    <link rel="stylesheet" style="text/css" href="{{url_for('static', filename='css/file_list.css')}}">
     
 <body>
-      <!-- jQuery library !-->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     
-      <!-- Popper JS !-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  
-      <!-- Latest compiled JavaScript !-->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+<script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
       {% block javascript %}
             <script type="text/javascript">
                 {% include './js_scripts/spa.js' %}
+                {% include './js_scripts/upload.js' %}
+                {% include './js_scripts/file_list.js' %}
             </script>
             <!-- The contents of myscript.js will be loaded inside the script tag !-->
       {% endblock javascript %}
-
+      
       {% include 'sidenav.html' %}
       <div class="container-fluid bodyClass">
         {% include 'header.html' %}
-        {% include 'upload.html' %}   
-        <!-- <div>
-            TEst
-            </div> -->
+        <div class="formatDiv">
+            {% block uploadFileContent %} {% endblock uploadFileContent %}
+            {% block fileListContent %} {% endblock fileListContent %}
+        </div>
         <!-- {% include 'footer.html' %} !-->
         {% include 'footer.html' %}
       </div>
