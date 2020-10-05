@@ -41,9 +41,9 @@ nav {
   width: 0px;
   height: 65vh;
   top: 15%;
-  opacity: 0.5;
+  opacity: 1;
   position: absolute;
-  background: currentColor;;
+  background: darkslateblue;
   transition: width 0.4s linear;
 }
 

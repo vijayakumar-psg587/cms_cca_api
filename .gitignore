@@ -181,6 +181,9 @@ instance/
 docs/_build/
 doc/_build/
 
+# Files uload
+upload/
+
 # PyBuilder
 target/
 
