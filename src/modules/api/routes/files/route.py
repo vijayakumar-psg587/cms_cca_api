@@ -34,27 +34,30 @@ def save_file():
     )
 
 
-@filesRoute.route('/cms-file/list', methods=['GET', 'POST'])
+@filesRoute.route('/cms-file/list', methods=['GET'])
 @custom_logger_time_wrapper(__file__, logging.INFO)
 def list_files():
+    print('coming in lit files')
     # get the list based on input directory -by default it should load fprs files
-    if request.method == 'POST':
-        body = request.json
-        print(body['search_folder'])
-    return render_template('file_list.html', fileListFlag=True)
+    # if request.method == 'POST':
+    #     body = request.json
+    #     print(body['search_folder'])
+
+    return render_template('file_list.html')
 
 
-@filesRoute.route('/cms-file/dir-list', methods=['POST'])
-@custom_logger_time_wrapper(__file__, logging.INFO)
-def list_files_from_dir():
+@ filesRoute.route('/cms-file/file_list', methods=['POST'])
+@ custom_logger_time_wrapper(__file__, logging.INFO)
+def file_list():
     print(request.json)
     file_list_dict = get_file_list('fprs')
     print(file_list_dict)
-    return 'test'
+    # Call the script to do the file comparison and generate a new one
+    return Response("Success", status=200)
 
 
-@filesRoute.route('/cms-file/download', methods=['POST'])
-@custom_logger_time_wrapper(__file__, logging.INFO)
+@ filesRoute.route('/cms-file/download', methods=['POST'])
+@ custom_logger_time_wrapper(__file__, logging.INFO)
 def download_file():
     print('fileNameIndex and fileNameFolder', request.json)
     file_list_dict = get_file_list(request.json['search_folder'])

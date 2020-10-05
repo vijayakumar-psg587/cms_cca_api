@@ -21,6 +21,7 @@
                                         aria-describedby="helpId" required>
                                     <small id="helpId" class="text-muted">Enter the plan number</small>
                                 </div>
+                                <div class="planIdErrorClass"></div>
                             
                             </div>
                             <div class='form-group file-card-group'>
@@ -36,6 +37,7 @@
                                                 
                                                 <a href="#" class="btn btn-primary" id="fprsFileInputButton" onclick="uploadFprsFileEvent(event)">
                                                    <i class="fa fa-arrow-alt-circle-up fa-2x" aria-hidden="true"></i> <span id="fprsFileInputSpan" style="font-size: 1.2em;">Upload</span></a>
+                                                <div class="fprsFileErrClass"></div>    
                                             </div>
                                     </div>
                                     <div class="card card_div_right border-0" style="width: 18rem; display: inline-block;">
@@ -48,6 +50,7 @@
                                                 <div style="height:2vh"></div>
                                                 <a href="#" class="btn btn-primary" id="cmsFileInputButton" onclick="uploadCMSFileEvent(event)">
                                                     <i class="fa fa-arrow-alt-circle-up fa-2x" aria-hidden="true"></i> <span id="cmsFileInputSpan" style="font-size: 1.2em;">Upload</span></a>
+                                                <div class="cmsFileErrClass"></div>
                                             </div>
                                     </div>
                                     

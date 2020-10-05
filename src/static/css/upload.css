@@ -133,3 +133,8 @@ h3.generateButtonClass {
     width: 40%;
     display: inline-block;
 }
+
+.input_error  {
+ 
+    border: 2px solid red !important;
+}
