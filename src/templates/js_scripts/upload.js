@@ -249,11 +249,10 @@ function generateClick(ev) {
     console.log('before callong tje fetch api');
     // After validation, if form valid, pass on the data to file-list using fetch
     fetch('/cms-file/file_list', {
-        method: 'POST',
+        method: 'GET',
         headers: {
             'Content-type':'application/json'
-        },
-        body: JSON.stringify({search_folder:'fprs'})
+        }
     }).then(data => {
        
         if(data.status >= 302) {
@@ -281,13 +280,10 @@ function generateClick(ev) {
 
             cmsFileLabelEl.innerHTML = 'Choose a file';
             fprsFileLabelEl.innerHTML = 'Choose a file';
-            console.log('href', window.location);
+            
         }
     }).then(resp => {
-        console.log('response data:', resp);
-        console.log('href', window.location);
         const redirect_url = window.location.origin+'/cms-file/list';
-        console.log('after mod:', window.location);
         window.location.href = redirect_url;
     }).catch(err => {
         // throw the err respise from route.py

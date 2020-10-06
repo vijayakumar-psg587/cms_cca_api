@@ -33,23 +33,95 @@ def save_file():
         status=200,
     )
 
+# this is the way to load the html via python, another way is to use the js to load
 
-@filesRoute.route('/cms-file/list', methods=['GET'])
-@custom_logger_time_wrapper(__file__, logging.INFO)
+
+@filesRoute.route('/cms-file/list', methods=['GET', 'POST'])
+# @custom_logger_time_wrapper(__file__, logging.INFO)
 def list_files():
-    print('coming in lit files')
-    # get the list based on input directory -by default it should load fprs files
-    # if request.method == 'POST':
-    #     body = request.json
-    #     print(body['search_folder'])
+    file_list_cms_dict = {}
+    file_list_comp_dict = {}
+    fileDistFlag = False
+    fileDistCOMPFlag = False
+    fileDistCMSFlag = False
+    if request.method == 'GET':
+        file_list_dict = get_file_list('fprs')
+        if len(file_list_dict) > 0:
+            return render_template('file_list.html', fileDistFlag=True, fileDistCMSFlag=False, fileDistCOMPFlag=False, file_list_dict=file_list_dict)
+        else:
+            return render_template('file_list.html', fileDistFlag=False, fileDistCMSFlag=False, fileDistCOMPFlag=False, file_list_dict=file_list_dict)
+    else:
+        search_folder = request.json['search_folder']
+        print('folder to be searched:', search_folder)
 
-    return render_template('file_list.html')
+        if search_folder == 'fprs':
+            file_list_dict = get_file_list(search_folder)
+            if len(file_list_dict) > 0:
+                return render_template('file_list.html', fileDistFlag=True, fileDistCMSFlag=False, fileDistCOMPFlag=False, file_list_dict=file_list_dict)
+            else:
+                return render_template('file_list.html', fileDistFlag=False, fileDistCMSFlag=False, fileDistCOMPFlag=False, file_list_dict=file_list_dict)
+        # elif search_folder == 'cms':
+        #     file_list_cms_dict = get_file_list(search_folder)
+        #     print('inside cms:', file_list_cms_dict)
+        #     print('all flags: {} {} {}:'.format(fileDistFlag,
+        #                                         fileDistCMSFlag, fileDistCOMPFlag))
+        #     if len(file_list_cms_dict) > 0:
+        #         return render_template('file_list.html', fileDistFlag=False, fileDistCMSFlag=True, fileDistCOMPFlag=False, file_list_cms_dict=file_list_cms_dict)
+        #     else:
+        #         return render_template('file_list.html', fileDistFlag=False, fileDistCMSFlag=False, fileDistCOMPFlag=False, file_list_cms_dict=file_list_cms_dict)
+        # else:
+        #     file_list_comp_dict = get_file_list(search_folder)
+        #     if len(file_list_comp_dict) > 0:
+        #         return render_template('file_list.html', fileDistCompFlag=True, fileDistFlag=False, fileDistCMSFlag=False, file_list_comp_dict=file_list_comp_dict)
+        #     else:
+        #         return render_template('file_list.html', fileDistCompFlag=False, fileDistFlag=False, fileDistCMSFlag=False, file_list_comp_dict=file_list_comp_dict)
+
+                # The call from js comes here , on receiving a successful reponse, then  it is redirected to file_list.html page
+                #  in the UI itself. so make sure to set the necessary details in js as well before loading the page
 
 
-@ filesRoute.route('/cms-file/file_list', methods=['POST'])
+@ filesRoute.route('/cms-files/get-cms-files', methods=['GET'])
+# @ custom_logger_time_wrapper(__file__, logging.INFO)
+def get_cms_file_list():
+    file_list_cms_dict = get_file_list('cms')
+    print('file_list_cms_dict', file_list_cms_dict)
+    return redirect(url_for('filesRoute.get_files_from_dir', fileDistFlag=False, fileDistCMSFlag=True, fileDistCOMPFlag=False))
+
+
+@ filesRoute.route('/cms-files/get-comp-files', methods=['GET'])
+# @ custom_logger_time_wrapper(__file__, logging.INFO)
+def get_comp_file_list():
+    file_list_comp_dict = get_file_list('comp')
+    return redirect(url_for('filesRoute.get_files_from_dir', fileDistFlag=False, fileDistCMSFlag=False, fileDistCOMPFlag=True))
+
+
+@ filesRoute.route('/cms-file/display-files/<fileDistFlag>/<fileDistCMSFlag>/<fileDistCOMPFlag>')
+# @ custom_logger_time_wrapper(__file__, logging.INFO)
+def get_files_from_dir(fileDistFlag, fileDistCMSFlag, fileDistCOMPFlag):
+    file_list_dict = {}
+    print('printing all flags', fileDistCMSFlag,
+          fileDistCOMPFlag, fileDistFlag)
+    print('fileDistCMSFlag and (not fileDistCOMPFlag) and (not fileDistFlag) - {} {} {}'.format(
+          fileDistCMSFlag, (str(fileDistCOMPFlag) == 'False'), (str(fileDistFlag))))
+    if str(fileDistCMSFlag) == 'True' and str(fileDistCOMPFlag) == 'False' and str(fileDistFlag) == 'False':
+        search_folder = 'cms'
+        file_list_dict = get_file_list(search_folder)
+        print('fie list dict:', file_list_dict)
+        return render_template('file_list.html', fileDistCMSFlag=True, file_list_cms_dict=file_list_dict)
+    elif str(fileDistCOMPFlag) == 'True' and str(fileDistCMSFlag) == 'False' and str(fileDistFlag) == 'False':
+        search_folder = 'comp'
+        file_list_dict = get_file_list(search_folder)
+        return render_template('file_list.html', fileDistCOMPFlag=True, file_list_comp_dict=file_list_dict)
+    else:
+        search_folder = 'fprs'
+        file_list_dict = get_file_list(search_folder)
+        return render_template('file_list.html', fileDistFlag=True, file_list_dict=file_list_dict)
+
+
+@ filesRoute.route('/cms-file/file_list', methods=['GET'])
 @ custom_logger_time_wrapper(__file__, logging.INFO)
 def file_list():
-    print(request.json)
+
     file_list_dict = get_file_list('fprs')
     print(file_list_dict)
     # Call the script to do the file comparison and generate a new one

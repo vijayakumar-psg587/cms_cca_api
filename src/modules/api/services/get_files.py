@@ -5,7 +5,7 @@ from src.modules.common.util.decorator.cust_logger import custom_logger_time_wra
 from src.definitions import ROOT_UPLOAD_DIR, ROOT_SRC_DIR
 
 
-@custom_logger_time_wrapper(__file__, logging.INFO)
+# @custom_logger_time_wrapper(__file__, logging.INFO)
 def get_file_list(dir_name):
     print('inside fileList', dir_name, ROOT_UPLOAD_DIR)
 
